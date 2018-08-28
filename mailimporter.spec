@@ -6,7 +6,7 @@
 #
 Name     : mailimporter
 Version  : 18.08.0
-Release  : 1
+Release  : 2
 URL      : https://download.kde.org/stable/applications/18.08.0/src/mailimporter-18.08.0.tar.xz
 Source0  : https://download.kde.org/stable/applications/18.08.0/src/mailimporter-18.08.0.tar.xz
 Source99 : https://download.kde.org/stable/applications/18.08.0/src/mailimporter-18.08.0.tar.xz.sig
@@ -16,6 +16,7 @@ License  : GPL-2.0 LGPL-2.1
 Requires: mailimporter-lib
 Requires: mailimporter-license
 Requires: mailimporter-locales
+Requires: mailimporter-data
 BuildRequires : akonadi-dev
 BuildRequires : akonadi-mime-dev
 BuildRequires : boost-dev
@@ -28,10 +29,19 @@ BuildRequires : qtbase-dev qtbase-extras mesa-dev
 %description
 No detailed description available
 
+%package data
+Summary: data components for the mailimporter package.
+Group: Data
+
+%description data
+data components for the mailimporter package.
+
+
 %package dev
 Summary: dev components for the mailimporter package.
 Group: Development
 Requires: mailimporter-lib
+Requires: mailimporter-data
 Provides: mailimporter-devel
 
 %description dev
@@ -41,6 +51,7 @@ dev components for the mailimporter package.
 %package lib
 Summary: lib components for the mailimporter package.
 Group: Libraries
+Requires: mailimporter-data
 Requires: mailimporter-license
 
 %description lib
@@ -71,7 +82,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1535265077
+export SOURCE_DATE_EPOCH=1535434731
 mkdir clr-build
 pushd clr-build
 %cmake ..
@@ -79,7 +90,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1535265077
+export SOURCE_DATE_EPOCH=1535434731
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/doc/mailimporter
 cp COPYING %{buildroot}/usr/share/doc/mailimporter/COPYING
@@ -91,6 +102,11 @@ popd
 
 %files
 %defattr(-,root,root,-)
+
+%files data
+%defattr(-,root,root,-)
+/usr/share/xdg/mailimporter.categories
+/usr/share/xdg/mailimporter.renamecategories
 
 %files dev
 %defattr(-,root,root,-)
