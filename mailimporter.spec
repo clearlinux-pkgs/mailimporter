@@ -6,7 +6,7 @@
 #
 Name     : mailimporter
 Version  : 18.12.3
-Release  : 4
+Release  : 5
 URL      : https://download.kde.org/stable/applications/18.12.3/src/mailimporter-18.12.3.tar.xz
 Source0  : https://download.kde.org/stable/applications/18.12.3/src/mailimporter-18.12.3.tar.xz
 Source99 : https://download.kde.org/stable/applications/18.12.3/src/mailimporter-18.12.3.tar.xz.sig
@@ -19,6 +19,7 @@ Requires: mailimporter-license = %{version}-%{release}
 Requires: mailimporter-locales = %{version}-%{release}
 BuildRequires : akonadi-dev
 BuildRequires : akonadi-mime-dev
+BuildRequires : boost-dev
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : kmime-dev
@@ -82,16 +83,15 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1552015250
+export SOURCE_DATE_EPOCH=1555350855
 mkdir -p clr-build
 pushd clr-build
-export LDFLAGS="${LDFLAGS} -fno-lto"
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1552015250
+export SOURCE_DATE_EPOCH=1555350855
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/mailimporter
 cp COPYING %{buildroot}/usr/share/package-licenses/mailimporter/COPYING
