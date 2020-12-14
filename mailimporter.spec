@@ -5,14 +5,14 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : mailimporter
-Version  : 20.08.3
-Release  : 25
-URL      : https://download.kde.org/stable/release-service/20.08.3/src/mailimporter-20.08.3.tar.xz
-Source0  : https://download.kde.org/stable/release-service/20.08.3/src/mailimporter-20.08.3.tar.xz
-Source1  : https://download.kde.org/stable/release-service/20.08.3/src/mailimporter-20.08.3.tar.xz.sig
+Version  : 20.12.0
+Release  : 26
+URL      : https://download.kde.org/stable/release-service/20.12.0/src/mailimporter-20.12.0.tar.xz
+Source0  : https://download.kde.org/stable/release-service/20.12.0/src/mailimporter-20.12.0.tar.xz
+Source1  : https://download.kde.org/stable/release-service/20.12.0/src/mailimporter-20.12.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
-License  : GPL-2.0 LGPL-2.1
+License  : GPL-2.0 GPL-3.0 LGPL-2.0
 Requires: mailimporter-data = %{version}-%{release}
 Requires: mailimporter-lib = %{version}-%{release}
 Requires: mailimporter-license = %{version}-%{release}
@@ -23,6 +23,7 @@ BuildRequires : akonadi-mime-dev
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : extra-cmake-modules-data
+BuildRequires : grantleetheme-dev
 BuildRequires : karchive-dev
 BuildRequires : kconfig-dev
 BuildRequires : kcontacts-dev
@@ -83,15 +84,15 @@ locales components for the mailimporter package.
 
 
 %prep
-%setup -q -n mailimporter-20.08.3
-cd %{_builddir}/mailimporter-20.08.3
+%setup -q -n mailimporter-20.12.0
+cd %{_builddir}/mailimporter-20.12.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1604619203
+export SOURCE_DATE_EPOCH=1607919421
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -107,11 +108,15 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1604619203
+export SOURCE_DATE_EPOCH=1607919421
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/mailimporter
-cp %{_builddir}/mailimporter-20.08.3/COPYING %{buildroot}/usr/share/package-licenses/mailimporter/7c203dee3a03037da436df03c4b25b659c073976
-cp %{_builddir}/mailimporter-20.08.3/COPYING.LIB %{buildroot}/usr/share/package-licenses/mailimporter/9a1929f4700d2407c70b507b3b2aaf6226a9543c
+cp %{_builddir}/mailimporter-20.12.0/LICENSES/GPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/mailimporter/2a638514c87c4923c0570c55822620fad56f2a33
+cp %{_builddir}/mailimporter-20.12.0/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/mailimporter/e712eadfab0d2357c0f50f599ef35ee0d87534cb
+cp %{_builddir}/mailimporter-20.12.0/LICENSES/GPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/mailimporter/6091db0aead0d90182b93d3c0d09ba93d188f907
+cp %{_builddir}/mailimporter-20.12.0/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/mailimporter/20079e8f79713dce80ab09774505773c926afa2a
+cp %{_builddir}/mailimporter-20.12.0/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/mailimporter/7d9831e05094ce723947d729c2a46a09d6e90275
+cp %{_builddir}/mailimporter-20.12.0/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/mailimporter/7d9831e05094ce723947d729c2a46a09d6e90275
 pushd clr-build
 %make_install
 popd
@@ -205,14 +210,17 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5MailImporter.so.5
-/usr/lib64/libKF5MailImporter.so.5.15.3
+/usr/lib64/libKF5MailImporter.so.5.16.0
 /usr/lib64/libKF5MailImporterAkonadi.so.5
-/usr/lib64/libKF5MailImporterAkonadi.so.5.15.3
+/usr/lib64/libKF5MailImporterAkonadi.so.5.16.0
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/mailimporter/7c203dee3a03037da436df03c4b25b659c073976
-/usr/share/package-licenses/mailimporter/9a1929f4700d2407c70b507b3b2aaf6226a9543c
+/usr/share/package-licenses/mailimporter/20079e8f79713dce80ab09774505773c926afa2a
+/usr/share/package-licenses/mailimporter/2a638514c87c4923c0570c55822620fad56f2a33
+/usr/share/package-licenses/mailimporter/6091db0aead0d90182b93d3c0d09ba93d188f907
+/usr/share/package-licenses/mailimporter/7d9831e05094ce723947d729c2a46a09d6e90275
+/usr/share/package-licenses/mailimporter/e712eadfab0d2357c0f50f599ef35ee0d87534cb
 
 %files locales -f libmailimporter.lang
 %defattr(-,root,root,-)
