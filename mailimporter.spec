@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : mailimporter
-Version  : 21.12.3
-Release  : 38
-URL      : https://download.kde.org/stable/release-service/21.12.3/src/mailimporter-21.12.3.tar.xz
-Source0  : https://download.kde.org/stable/release-service/21.12.3/src/mailimporter-21.12.3.tar.xz
-Source1  : https://download.kde.org/stable/release-service/21.12.3/src/mailimporter-21.12.3.tar.xz.sig
+Version  : 22.04.0
+Release  : 39
+URL      : https://download.kde.org/stable/release-service/22.04.0/src/mailimporter-22.04.0.tar.xz
+Source0  : https://download.kde.org/stable/release-service/22.04.0/src/mailimporter-22.04.0.tar.xz
+Source1  : https://download.kde.org/stable/release-service/22.04.0/src/mailimporter-22.04.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause CC0-1.0 GPL-2.0 GPL-3.0 LGPL-2.0
@@ -32,8 +32,8 @@ BuildRequires : kcoreaddons-dev
 BuildRequires : ki18n-dev
 BuildRequires : kio-dev
 BuildRequires : kmime-dev
+BuildRequires : kpimtextedit-dev
 BuildRequires : pimcommon-dev
-BuildRequires : qtbase-dev mesa-dev
 
 %description
 No detailed description available
@@ -85,15 +85,15 @@ locales components for the mailimporter package.
 
 
 %prep
-%setup -q -n mailimporter-21.12.3
-cd %{_builddir}/mailimporter-21.12.3
+%setup -q -n mailimporter-22.04.0
+cd %{_builddir}/mailimporter-22.04.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1646607340
+export SOURCE_DATE_EPOCH=1650837364
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -109,18 +109,19 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1646607340
+export SOURCE_DATE_EPOCH=1650837364
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/mailimporter
-cp %{_builddir}/mailimporter-21.12.3/CMakePresets.json.license %{buildroot}/usr/share/package-licenses/mailimporter/29fb05b49e12a380545499938c4879440bd8851e
-cp %{_builddir}/mailimporter-21.12.3/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/mailimporter/8287b608d3fa40ef401339fd907ca1260c964123
-cp %{_builddir}/mailimporter-21.12.3/LICENSES/GPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/mailimporter/2a638514c87c4923c0570c55822620fad56f2a33
-cp %{_builddir}/mailimporter-21.12.3/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/mailimporter/e712eadfab0d2357c0f50f599ef35ee0d87534cb
-cp %{_builddir}/mailimporter-21.12.3/LICENSES/GPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/mailimporter/6091db0aead0d90182b93d3c0d09ba93d188f907
-cp %{_builddir}/mailimporter-21.12.3/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/mailimporter/20079e8f79713dce80ab09774505773c926afa2a
-cp %{_builddir}/mailimporter-21.12.3/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/mailimporter/7d9831e05094ce723947d729c2a46a09d6e90275
-cp %{_builddir}/mailimporter-21.12.3/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/mailimporter/7d9831e05094ce723947d729c2a46a09d6e90275
-cp %{_builddir}/mailimporter-21.12.3/metainfo.yaml.license %{buildroot}/usr/share/package-licenses/mailimporter/7ff5a7dd2c915b2b34329c892e06917c5f82f3a4
+cp %{_builddir}/mailimporter-22.04.0/CMakePresets.json.license %{buildroot}/usr/share/package-licenses/mailimporter/c085897bc39e05746ffd2d889a6e84ff1b7ae2d9
+cp %{_builddir}/mailimporter-22.04.0/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/mailimporter/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
+cp %{_builddir}/mailimporter-22.04.0/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/mailimporter/8287b608d3fa40ef401339fd907ca1260c964123
+cp %{_builddir}/mailimporter-22.04.0/LICENSES/GPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/mailimporter/2a638514c87c4923c0570c55822620fad56f2a33
+cp %{_builddir}/mailimporter-22.04.0/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/mailimporter/e712eadfab0d2357c0f50f599ef35ee0d87534cb
+cp %{_builddir}/mailimporter-22.04.0/LICENSES/GPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/mailimporter/6091db0aead0d90182b93d3c0d09ba93d188f907
+cp %{_builddir}/mailimporter-22.04.0/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/mailimporter/20079e8f79713dce80ab09774505773c926afa2a
+cp %{_builddir}/mailimporter-22.04.0/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/mailimporter/7d9831e05094ce723947d729c2a46a09d6e90275
+cp %{_builddir}/mailimporter-22.04.0/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/mailimporter/7d9831e05094ce723947d729c2a46a09d6e90275
+cp %{_builddir}/mailimporter-22.04.0/metainfo.yaml.license %{buildroot}/usr/share/package-licenses/mailimporter/7ff5a7dd2c915b2b34329c892e06917c5f82f3a4
 pushd clr-build
 %make_install
 popd
@@ -136,68 +137,68 @@ popd
 
 %files dev
 %defattr(-,root,root,-)
-/usr/include/KF5/MailImporter/FilterBalsa
-/usr/include/KF5/MailImporter/FilterClawsMail
-/usr/include/KF5/MailImporter/FilterEvolution
-/usr/include/KF5/MailImporter/FilterEvolution_v2
-/usr/include/KF5/MailImporter/FilterEvolution_v3
-/usr/include/KF5/MailImporter/FilterIcedove
-/usr/include/KF5/MailImporter/FilterImporterBase
-/usr/include/KF5/MailImporter/FilterInfo
-/usr/include/KF5/MailImporter/FilterInfoGui
-/usr/include/KF5/MailImporter/FilterKMailArchive
-/usr/include/KF5/MailImporter/FilterKMail_maildir
-/usr/include/KF5/MailImporter/FilterLNotes
-/usr/include/KF5/MailImporter/FilterMBox
-/usr/include/KF5/MailImporter/FilterMailApp
-/usr/include/KF5/MailImporter/FilterMailmanGzip
-/usr/include/KF5/MailImporter/FilterOE
-/usr/include/KF5/MailImporter/FilterOpera
-/usr/include/KF5/MailImporter/FilterPMail
-/usr/include/KF5/MailImporter/FilterPlain
-/usr/include/KF5/MailImporter/FilterSeaMonkey
-/usr/include/KF5/MailImporter/FilterSylpheed
-/usr/include/KF5/MailImporter/FilterTheBat
-/usr/include/KF5/MailImporter/FilterThunderbird
-/usr/include/KF5/MailImporter/Filters
-/usr/include/KF5/MailImporter/ImportMailsWidget
-/usr/include/KF5/MailImporter/MailImporter_Utils
-/usr/include/KF5/MailImporter/MessageStatus
-/usr/include/KF5/MailImporter/OtherMailerUtil
-/usr/include/KF5/MailImporterAkonadi/FilterImporterAkonadi
-/usr/include/KF5/mailimporter/filterbalsa.h
-/usr/include/KF5/mailimporter/filterclawsmail.h
-/usr/include/KF5/mailimporter/filterevolution.h
-/usr/include/KF5/mailimporter/filterevolution_v2.h
-/usr/include/KF5/mailimporter/filterevolution_v3.h
-/usr/include/KF5/mailimporter/filtericedove.h
-/usr/include/KF5/mailimporter/filterimporterbase.h
-/usr/include/KF5/mailimporter/filterinfo.h
-/usr/include/KF5/mailimporter/filterinfogui.h
-/usr/include/KF5/mailimporter/filterkmail_maildir.h
-/usr/include/KF5/mailimporter/filterkmailarchive.h
-/usr/include/KF5/mailimporter/filterlnotes.h
-/usr/include/KF5/mailimporter/filtermailapp.h
-/usr/include/KF5/mailimporter/filtermailmangzip.h
-/usr/include/KF5/mailimporter/filtermbox.h
-/usr/include/KF5/mailimporter/filteroe.h
-/usr/include/KF5/mailimporter/filteropera.h
-/usr/include/KF5/mailimporter/filterplain.h
-/usr/include/KF5/mailimporter/filterpmail.h
-/usr/include/KF5/mailimporter/filters.h
-/usr/include/KF5/mailimporter/filterseamonkey.h
-/usr/include/KF5/mailimporter/filtersylpheed.h
-/usr/include/KF5/mailimporter/filterthebat.h
-/usr/include/KF5/mailimporter/filterthunderbird.h
-/usr/include/KF5/mailimporter/importmailswidget.h
-/usr/include/KF5/mailimporter/mailimporter_export.h
-/usr/include/KF5/mailimporter/mailimporter_utils.h
-/usr/include/KF5/mailimporter/messagestatus.h
-/usr/include/KF5/mailimporter/othermailerutil.h
-/usr/include/KF5/mailimporter_version.h
-/usr/include/KF5/mailimporterakonadi/filterimporterakonadi.h
-/usr/include/KF5/mailimporterakonadi/mailimporterakonadi_export.h
-/usr/include/KF5/mailimporterakonadi_version.h
+/usr/include/KF5/MailImporter/MailImporter/FilterBalsa
+/usr/include/KF5/MailImporter/MailImporter/FilterClawsMail
+/usr/include/KF5/MailImporter/MailImporter/FilterEvolution
+/usr/include/KF5/MailImporter/MailImporter/FilterEvolution_v2
+/usr/include/KF5/MailImporter/MailImporter/FilterEvolution_v3
+/usr/include/KF5/MailImporter/MailImporter/FilterIcedove
+/usr/include/KF5/MailImporter/MailImporter/FilterImporterBase
+/usr/include/KF5/MailImporter/MailImporter/FilterInfo
+/usr/include/KF5/MailImporter/MailImporter/FilterInfoGui
+/usr/include/KF5/MailImporter/MailImporter/FilterKMailArchive
+/usr/include/KF5/MailImporter/MailImporter/FilterKMail_maildir
+/usr/include/KF5/MailImporter/MailImporter/FilterLNotes
+/usr/include/KF5/MailImporter/MailImporter/FilterMBox
+/usr/include/KF5/MailImporter/MailImporter/FilterMailApp
+/usr/include/KF5/MailImporter/MailImporter/FilterMailmanGzip
+/usr/include/KF5/MailImporter/MailImporter/FilterOE
+/usr/include/KF5/MailImporter/MailImporter/FilterOpera
+/usr/include/KF5/MailImporter/MailImporter/FilterPMail
+/usr/include/KF5/MailImporter/MailImporter/FilterPlain
+/usr/include/KF5/MailImporter/MailImporter/FilterSeaMonkey
+/usr/include/KF5/MailImporter/MailImporter/FilterSylpheed
+/usr/include/KF5/MailImporter/MailImporter/FilterTheBat
+/usr/include/KF5/MailImporter/MailImporter/FilterThunderbird
+/usr/include/KF5/MailImporter/MailImporter/Filters
+/usr/include/KF5/MailImporter/MailImporter/ImportMailsWidget
+/usr/include/KF5/MailImporter/MailImporter/MailImporter_Utils
+/usr/include/KF5/MailImporter/MailImporter/MessageStatus
+/usr/include/KF5/MailImporter/MailImporter/OtherMailerUtil
+/usr/include/KF5/MailImporter/mailimporter/filterbalsa.h
+/usr/include/KF5/MailImporter/mailimporter/filterclawsmail.h
+/usr/include/KF5/MailImporter/mailimporter/filterevolution.h
+/usr/include/KF5/MailImporter/mailimporter/filterevolution_v2.h
+/usr/include/KF5/MailImporter/mailimporter/filterevolution_v3.h
+/usr/include/KF5/MailImporter/mailimporter/filtericedove.h
+/usr/include/KF5/MailImporter/mailimporter/filterimporterbase.h
+/usr/include/KF5/MailImporter/mailimporter/filterinfo.h
+/usr/include/KF5/MailImporter/mailimporter/filterinfogui.h
+/usr/include/KF5/MailImporter/mailimporter/filterkmail_maildir.h
+/usr/include/KF5/MailImporter/mailimporter/filterkmailarchive.h
+/usr/include/KF5/MailImporter/mailimporter/filterlnotes.h
+/usr/include/KF5/MailImporter/mailimporter/filtermailapp.h
+/usr/include/KF5/MailImporter/mailimporter/filtermailmangzip.h
+/usr/include/KF5/MailImporter/mailimporter/filtermbox.h
+/usr/include/KF5/MailImporter/mailimporter/filteroe.h
+/usr/include/KF5/MailImporter/mailimporter/filteropera.h
+/usr/include/KF5/MailImporter/mailimporter/filterplain.h
+/usr/include/KF5/MailImporter/mailimporter/filterpmail.h
+/usr/include/KF5/MailImporter/mailimporter/filters.h
+/usr/include/KF5/MailImporter/mailimporter/filterseamonkey.h
+/usr/include/KF5/MailImporter/mailimporter/filtersylpheed.h
+/usr/include/KF5/MailImporter/mailimporter/filterthebat.h
+/usr/include/KF5/MailImporter/mailimporter/filterthunderbird.h
+/usr/include/KF5/MailImporter/mailimporter/importmailswidget.h
+/usr/include/KF5/MailImporter/mailimporter/mailimporter_export.h
+/usr/include/KF5/MailImporter/mailimporter/mailimporter_utils.h
+/usr/include/KF5/MailImporter/mailimporter/messagestatus.h
+/usr/include/KF5/MailImporter/mailimporter/othermailerutil.h
+/usr/include/KF5/MailImporter/mailimporter_version.h
+/usr/include/KF5/MailImporterAkonadi/MailImporterAkonadi/FilterImporterAkonadi
+/usr/include/KF5/MailImporterAkonadi/mailimporterakonadi/filterimporterakonadi.h
+/usr/include/KF5/MailImporterAkonadi/mailimporterakonadi/mailimporterakonadi_export.h
+/usr/include/KF5/MailImporterAkonadi/mailimporterakonadi_version.h
 /usr/lib64/cmake/KF5MailImporter/KF5MailImporterConfig.cmake
 /usr/lib64/cmake/KF5MailImporter/KF5MailImporterConfigVersion.cmake
 /usr/lib64/cmake/KF5MailImporter/KF5MailImporterTargets-relwithdebinfo.cmake
@@ -214,19 +215,20 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5MailImporter.so.5
-/usr/lib64/libKF5MailImporter.so.5.19.3
+/usr/lib64/libKF5MailImporter.so.5.20.0
 /usr/lib64/libKF5MailImporterAkonadi.so.5
-/usr/lib64/libKF5MailImporterAkonadi.so.5.19.3
+/usr/lib64/libKF5MailImporterAkonadi.so.5.20.0
 
 %files license
 %defattr(0644,root,root,0755)
 /usr/share/package-licenses/mailimporter/20079e8f79713dce80ab09774505773c926afa2a
-/usr/share/package-licenses/mailimporter/29fb05b49e12a380545499938c4879440bd8851e
 /usr/share/package-licenses/mailimporter/2a638514c87c4923c0570c55822620fad56f2a33
 /usr/share/package-licenses/mailimporter/6091db0aead0d90182b93d3c0d09ba93d188f907
 /usr/share/package-licenses/mailimporter/7d9831e05094ce723947d729c2a46a09d6e90275
 /usr/share/package-licenses/mailimporter/7ff5a7dd2c915b2b34329c892e06917c5f82f3a4
 /usr/share/package-licenses/mailimporter/8287b608d3fa40ef401339fd907ca1260c964123
+/usr/share/package-licenses/mailimporter/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
+/usr/share/package-licenses/mailimporter/c085897bc39e05746ffd2d889a6e84ff1b7ae2d9
 /usr/share/package-licenses/mailimporter/e712eadfab0d2357c0f50f599ef35ee0d87534cb
 
 %files locales -f libmailimporter.lang
