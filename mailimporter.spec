@@ -6,11 +6,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : mailimporter
-Version  : 23.04.3
-Release  : 56
-URL      : https://download.kde.org/stable/release-service/23.04.3/src/mailimporter-23.04.3.tar.xz
-Source0  : https://download.kde.org/stable/release-service/23.04.3/src/mailimporter-23.04.3.tar.xz
-Source1  : https://download.kde.org/stable/release-service/23.04.3/src/mailimporter-23.04.3.tar.xz.sig
+Version  : 23.08.0
+Release  : 57
+URL      : https://download.kde.org/stable/release-service/23.08.0/src/mailimporter-23.08.0.tar.xz
+Source0  : https://download.kde.org/stable/release-service/23.08.0/src/mailimporter-23.08.0.tar.xz
+Source1  : https://download.kde.org/stable/release-service/23.08.0/src/mailimporter-23.08.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause CC0-1.0 GPL-2.0 GPL-3.0 LGPL-2.0
@@ -87,15 +87,15 @@ locales components for the mailimporter package.
 
 
 %prep
-%setup -q -n mailimporter-23.04.3
-cd %{_builddir}/mailimporter-23.04.3
+%setup -q -n mailimporter-23.08.0
+cd %{_builddir}/mailimporter-23.08.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1688882292
+export SOURCE_DATE_EPOCH=1693237156
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -128,7 +128,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1688882292
+export SOURCE_DATE_EPOCH=1693237156
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/mailimporter
 cp %{_builddir}/mailimporter-%{version}/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/mailimporter/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c || :
@@ -221,12 +221,6 @@ popd
 /usr/include/KPim5/MailImporterAkonadi/mailimporterakonadi/filterimporterakonadi.h
 /usr/include/KPim5/MailImporterAkonadi/mailimporterakonadi/mailimporterakonadi_export.h
 /usr/include/KPim5/MailImporterAkonadi/mailimporterakonadi_version.h
-/usr/lib64/cmake/KF5MailImporter/KF5MailImporterConfig.cmake
-/usr/lib64/cmake/KF5MailImporter/KF5MailImporterConfigVersion.cmake
-/usr/lib64/cmake/KF5MailImporterAkonadi/KF5MailImporterAkonadiConfig.cmake
-/usr/lib64/cmake/KF5MailImporterAkonadi/KF5MailImporterAkonadiConfigVersion.cmake
-/usr/lib64/cmake/KF5MailImporterAkonadi/KPim5MailImporterAkonadiTargets-relwithdebinfo.cmake
-/usr/lib64/cmake/KF5MailImporterAkonadi/KPim5MailImporterAkonadiTargets.cmake
 /usr/lib64/cmake/KPim5MailImporter/KPim5MailImporterConfig.cmake
 /usr/lib64/cmake/KPim5MailImporter/KPim5MailImporterConfigVersion.cmake
 /usr/lib64/cmake/KPim5MailImporter/KPim5MailImporterTargets-relwithdebinfo.cmake
@@ -242,12 +236,12 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
-/V3/usr/lib64/libKPim5MailImporter.so.5.23.3
-/V3/usr/lib64/libKPim5MailImporterAkonadi.so.5.23.3
+/V3/usr/lib64/libKPim5MailImporter.so.5.24.0
+/V3/usr/lib64/libKPim5MailImporterAkonadi.so.5.24.0
 /usr/lib64/libKPim5MailImporter.so.5
-/usr/lib64/libKPim5MailImporter.so.5.23.3
+/usr/lib64/libKPim5MailImporter.so.5.24.0
 /usr/lib64/libKPim5MailImporterAkonadi.so.5
-/usr/lib64/libKPim5MailImporterAkonadi.so.5.23.3
+/usr/lib64/libKPim5MailImporterAkonadi.so.5.24.0
 
 %files license
 %defattr(0644,root,root,0755)
